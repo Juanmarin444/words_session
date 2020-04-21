@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Session Word</title>
+    <link rel="stylesheet" href="/static/post_words/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <div class="title">
+          <h1>Add a new word.</h1>
+        </div> <!-- title -->
+        <div class="form">
+          <form action="/process" method="post">
+            {% csrf_token %}
+            <input type="text" id="word" name="word"><br>
+            <label>Choose a color</label><br>
+
+            <input type="radio" id="red" name="color" value="red">
+            <label for="red">RED</label><br>
+
+            <input type="radio" id="blue" name="color" value="blue">
+            <label for="blue">BLUE</label><br>
+
+            <input type="radio" id="green" name="color" value="green">
+            <label for="green">GREEN</label><br>
+
+            <input type="checkbox" id="font_size" name="font_size" value="200%">
+            <label for="font_size"> Show in big font.</label><br>
+
+            <input type="submit" value="Submit">
+          </form>
+        </div> <!-- form -->
+      </div> <!-- left -->
+      <div class="right">
+        <form action="/clear" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Submit">
+        </form>
+      </div> <!-- right -->
+      <div class="display">
+        {% for post in request.session.posts %}
+          <p class='posted_word' style="color: {{ post.color }}; font-size: {{ post.font_size }};">{{ post.word }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

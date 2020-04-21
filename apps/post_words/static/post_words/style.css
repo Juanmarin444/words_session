@@ -1,0 +1,17 @@
+.container {
+  background-color: lightblue;
+  align-content: center;
+}
+
+.left {
+  display: inline-block;
+  width: 48%;
+  background-color: lightpink;
+  /* background-color: lightblue; */
+}
+
+.right {
+  display: inline-block;
+  width: 48%;
+  background-color: lightgreen;
+}
